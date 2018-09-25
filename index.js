@@ -1,9 +1,35 @@
-<article>
-  <header><h2>The Results are In!</h2></header>
-  <p>
-    After careful consideration and a generous grant from NASA, our team has determined that a woodchuck could chuck five wood, with a standard deviation of +/- .37 wood.
-  </p>
-  <footer>posted by Chuck Wooden</footer>
-  <div id="comments">
-  </div>
-</article>
+function addComment() {
+  var bodyText = "This research is bold and important!";
+  var commenter = "Definitely not a woodchuck looking to eat the wood";
+
+  var commentBody = createCommentBody(bodyText);
+  var commenterLabel = createCommenterLabel(commenter);
+  postNewComment(commentBody, commenterLabel);
+}
+
+function createCommentBody(comment) {
+  var bodyDiv = document.createElement("div");
+  var bodyPara = document.createElement("p");
+  bodyPara.innerHTML = comment;
+  bodyDiv.appendChild(bodyPara);
+  return bodyDiv;
+}
+
+function createCommenterLabel(commenter) {
+  var commenterDiv = document.createElement("div");
+  var commenterLabel = document.createElement("p");
+  commenterLabel.innerHTML = "posted by:&nbsp;";
+  var commenterName = document.createElement("span");
+  commenterName.innerHTML = commenter;
+  commenterLabel.appendChild(commenterName);
+  commenterDiv.appendChild(commenterLabel);
+  return commenterLabel;
+}
+
+function postNewComment(body, commenter) {
+  var commentsDiv = document.getElementById("comments");
+  var newCommentDiv = document.createElement("div");
+  newCommentDiv.appendChild(body);
+  newCommentDiv.appendChild(commenter);
+  commentsDiv.appendChild(newCommentDiv);
+}
